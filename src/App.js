@@ -29,7 +29,7 @@ function App() {
   const screen = window.innerWidth;
   const name = 'bird log';
 
-  // need to handle the remove from log functionality on bird and in mylog, prevent duplicate logs, somehow persist bird added state when main rerenders maybe or just check if bird is in log, clear log confirm modal, probably more idk....make entry component in mylog maybe, the maybe user admin...eventually
+  // successfully added message, need to handle the remove from log functionality on bird and in mylog, prevent duplicate logs, somehow persist bird added state when main rerenders maybe or just check if bird is in log, clear log confirm modal, probably more idk....make entry component in mylog maybe, the maybe user admin...eventually, filter and search log eventually
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
@@ -107,11 +107,18 @@ function App() {
     setMyLog(log);
   };
 
+  const removeEntry = entry => {
+    const log = JSON.parse(localStorage.getItem('mylog'));
+    const newLog = log.filter(item => {
+      return item.name !== entry;
+    });
+    localStorage.setItem('mylog', JSON.stringify(newLog));
+    setMyLog(newLog);
+  };
+
   const clearLog = () => {
-    if (window.confirm('are you sure?')) {
-      setMyLog([]);
-      localStorage.clear();
-    }
+    setMyLog([]);
+    localStorage.clear();
   };
 
   const showTheModal = () => setShowModal(true);
@@ -182,7 +189,9 @@ function App() {
           <Route
             exact
             path='/mylog'
-            render={() => <MyLog clearLog={clearLog} />}
+            render={() => (
+              <MyLog clearLog={clearLog} removeEntry={removeEntry} />
+            )}
           />
           <Route component={NotFound} />
         </Switch>

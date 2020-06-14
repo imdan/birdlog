@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Confirm from '../components/Confirm';
 
-const MyLog = ({ clearLog }) => {
+const MyLog = ({ clearLog, removeEntry }) => {
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [toRemove, setToRemove] = useState('');
+
   const entries = JSON.parse(localStorage.getItem('mylog'));
   // console.log(entries);
   const note =
     "Please note: Logs are being stored in your browser's local storage. Future updates will resolve this, but for now logs are not permanent and may be lost depending on browser settings.";
 
-  if (entries === null) {
+  const hideModal = () => {
+    setShowConfirm(false);
+  };
+
+  if (entries === null || entries.length === 0) {
     return (
       <>
         <div>
@@ -22,9 +30,24 @@ const MyLog = ({ clearLog }) => {
     <>
       <div className='myLog'>
         <p style={{ margin: '0 8vw', fontSize: '11px' }}>{note}</p>
-        <div onClick={clearLog} className='clearLog'>
+        <div
+          onClick={() => {
+            setToRemove('all');
+            setShowConfirm(true);
+          }}
+          className='clearLog'>
           clear log
         </div>
+        {showConfirm ? (
+          <Confirm
+            clearLog={clearLog}
+            hideModal={hideModal}
+            toRemove={toRemove}
+            removeEntry={removeEntry}
+          />
+        ) : (
+          ''
+        )}
         {entries.reverse().map(entry => {
           return (
             <div className='bird' key={entry.name}>
@@ -48,6 +71,14 @@ const MyLog = ({ clearLog }) => {
                 className='link photoLink'>
                 photos
               </a>
+              <div
+                className='removeEntry'
+                onClick={() => {
+                  setToRemove(entry.name);
+                  setShowConfirm(true);
+                }}>
+                +
+              </div>
             </div>
           );
         })}
