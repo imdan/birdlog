@@ -15,6 +15,7 @@ const Modal = ({ newBird, hideTheModal, updateLog }) => {
     const birdToAdd = {
       name: b.name,
       sciName: b.sciName,
+      count: count,
       when: b.when,
       where: where.toString(),
       notes: notes.toString(),
@@ -50,6 +51,7 @@ const Modal = ({ newBird, hideTheModal, updateLog }) => {
           value={count}
           onChange={handleCount}
           max={20}
+          min={1}
         />
         <p>when: {newBird.when}</p>
         where:{' '}
@@ -72,6 +74,9 @@ const Modal = ({ newBird, hideTheModal, updateLog }) => {
           onClick={e => {
             e.preventDefault();
             addToLog(newBird);
+
+            // handle successful add here...maybe...might not need to do anything here
+            console.log(`added ${newBird.name}`);
           }}>
           add to log
         </button>

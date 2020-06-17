@@ -10,17 +10,16 @@ const About = () => {
           personal bird log.
         </p>
         <p>
-          This is the first iteration so there might be some bugs, but the plan
-          is to make updates and add additional features soon, like accounts and
-          permanent logs.
+          This is the first iteration so there's probably some bugs, but the
+          plan is to make updates and add additional features soon, like
+          accounts and permanent logs.
         </p>
         <p>
-          In the meantime, any issues, feature requests, or feedback would be
-          much appreciated and can be sent to dan@sup.cool with bird log in the
-          subject line.
+          In the meantime, feel free to send any issues, feature requests, or
+          feedback to dan@sup.cool with bird log in the subject line.
         </p>
 
-        <p style={{ marginTop: '25px' }}>Happy birding.</p>
+        <p style={{ marginTop: '25px', textAlign: 'center' }}>Happy birding.</p>
       </div>
     </>
   );

@@ -25,11 +25,24 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [birdToAdd, setBirdToAdd] = useState(null);
   const [myLog, setMyLog] = useState([]);
+  const [showError, setShowError] = useState(false);
 
   const screen = window.innerWidth;
   const name = 'bird log';
+  const birdsInLog = myLog.map(entry => entry.name.toLowerCase());
 
-  // successfully added message, need to handle the remove from log functionality on bird and in mylog, prevent duplicate logs, somehow persist bird added state when main rerenders maybe or just check if bird is in log, clear log confirm modal, probably more idk....make entry component in mylog maybe, the maybe user admin...eventually, filter and search log eventually
+  // console.log(birdsInLog);
+  const isInLog = bird => {
+    if (birdsInLog.includes(bird.toLowerCase())) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  // FUNCTIONAL TODOS: fix footer issue, figured out added bird state, but it will remain as added as long as the bird name is in the log...so if you see a bird on a different day it would still be in the log and say added and not allow adding again...kinda ok i guess, but that would make this more of a daily log that you clear each time you use it, which would make some sort of save thing nice....
+
+  // EVENTUAL TODOS: maybe a nickname input on modal next to name, make entry component in mylog maybe, the maybe user admin...eventually (once I do the express backend...), filter and search log eventually, edit log functionality, undo remove could maybe be cool but idk how id do it exactly so confirm before remove should suffice for now, maybe link to download csv of current log next to clear log link...i think it can be done in node...soo later...
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
@@ -55,9 +68,10 @@ function App() {
 
   const more = birdsToShow.length === birds.length ? false : true;
 
-  const currentPage = event => setCurrent(event.target.innerHTML);
+  const currentPage = event => setCurrent(event.target.id);
 
   const getBirds = (lat, long) => {
+    setShowError(false);
     setHome(false);
     setLoading(true);
     birdService
@@ -67,6 +81,9 @@ function App() {
         setLoading(false);
       })
       .catch(err => {
+        setLoading(false);
+        setHome(true);
+        setShowError(true);
         console.error('fack...', err);
       });
   };
@@ -90,7 +107,7 @@ function App() {
     const newBird = {
       name: b.comName,
       sciName: b.sciName,
-      count: 0,
+      count: 1,
       when: new Date(Date.now()).toLocaleString(),
       where: '',
       notes: '',
@@ -172,6 +189,8 @@ function App() {
                   addNewBird={addNewBird}
                   showTheModal={showTheModal}
                   hideTheModal={hideTheModal}
+                  isInLog={isInLog}
+                  error={showError}
                 />
 
                 {!home && !loading && (

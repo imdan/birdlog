@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Bird = ({ bird, showTheModal, addNewBird }) => {
-  const [added, setAdded] = useState(false);
-
+const Bird = ({ bird, showTheModal, addNewBird, isInLog }) => {
   // const bird = birds[10];
+
+  const inLog = isInLog(bird.comName);
+
+  // i think i could pass myLog into here then check if myLog contains bird name and return true or false, then use that to set or unset the addButton, maybe just a check mark when and/or if added and keep remove funct in mylog page, this is also how I can prevent duplicates, just dont allow add if bird is in mylog...should work i think and can get rid of the added pos that isnt even working atm
 
   const seenDate = new Date(bird.obsDt);
   const wikiName = bird.comName.replace(' ', '_');
@@ -29,13 +31,10 @@ const Bird = ({ bird, showTheModal, addNewBird }) => {
         className='link photoLink'>
         photos
       </a>
-      {added ? (
-        <div
-          className='added'
-          onClick={() => {
-            console.log('remove bird');
-            setAdded(false);
-          }}></div>
+      {inLog ? (
+        <div className='added'>
+          <i className='fas fa-check'></i>
+        </div>
       ) : (
         <div
           className='addButton'
@@ -43,7 +42,9 @@ const Bird = ({ bird, showTheModal, addNewBird }) => {
             // addToLog(bird);
             showTheModal();
             addNewBird(bird);
-          }}></div>
+          }}>
+          +
+        </div>
       )}
     </div>
   );

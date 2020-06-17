@@ -4,6 +4,7 @@
 
 html {
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 body {
@@ -52,8 +53,8 @@ h1 {
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 84vw;
-  text-align: center;
+  width: 80vw;
+  text-align: left;
 }
 
 .aboutContainer h3 {
@@ -193,10 +194,6 @@ i {
   font-size: 20px;
 }
 
-.addButton::before {
-  content: '+';
-}
-
 .addButton:hover {
   background-color: #134e13;
   color: white;
@@ -207,7 +204,8 @@ i {
   box-sizing: border-box;
   position: absolute;
   padding: 0px;
-  /* padding-top: 1px; */
+  padding-top: 5px;
+  padding-left: 1px;
   top: 15px;
   right: 20px;
   width: 25px;
@@ -215,19 +213,11 @@ i {
   border-radius: 50px;
   border: solid 1px #134e13;
   text-align: center;
-  font-size: 20px;
-  background-color: #134e13;
+  font-size: 13px;
+  /* color: #134e13; */
   color: white;
+  background-color: #134e13;
   cursor: default;
-}
-
-.added::before {
-  content: '-';
-}
-
-.added:hover {
-  background-color: rgba(255, 255, 255, 0);
-  color: #134e13;
 }
 
 .modalContainer {

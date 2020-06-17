@@ -8,7 +8,7 @@ const MyLog = ({ clearLog, removeEntry }) => {
   const entries = JSON.parse(localStorage.getItem('mylog'));
   // console.log(entries);
   const note =
-    "Please note: Logs are being stored in your browser's local storage. Future updates will resolve this, but for now logs are not permanent and may be lost depending on browser settings.";
+    "***Logs are currently being stored in your browser's local storage so, for now, they are not permanent and may be lost depending on browser settings.";
 
   const hideModal = () => {
     setShowConfirm(false);
@@ -32,7 +32,7 @@ const MyLog = ({ clearLog, removeEntry }) => {
         <p style={{ margin: '0 8vw', fontSize: '11px' }}>{note}</p>
         <div
           onClick={() => {
-            setToRemove('all');
+            setToRemove('all birds');
             setShowConfirm(true);
           }}
           className='clearLog'>
@@ -53,6 +53,7 @@ const MyLog = ({ clearLog, removeEntry }) => {
             <div className='bird' key={entry.name}>
               <h2>{entry.name}</h2>
               <h4>{entry.sciName}</h4>
+              <p>count: {entry.count}</p>
               <p>when: {entry.when}</p>
               {entry.where ? <p>where: {entry.where}</p> : ''}
               {entry.notes ? <p>notes: {entry.notes}</p> : ''}

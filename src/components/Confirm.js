@@ -4,20 +4,20 @@ const Confirm = ({ clearLog, hideModal, toRemove, removeEntry }) => {
   return (
     <div className='modalContainer'>
       <div className='confirmModal'>
-        <p>are you sure?</p>
-        {toRemove === 'all' ? (
+        <p>remove {toRemove}?</p>
+        {toRemove === 'all birds' ? (
           <button onClick={clearLog} className='modalButton'>
             yeah
           </button>
         ) : (
           <button
             onClick={() => {
-              console.log(toRemove);
+              console.log('removed', toRemove);
               removeEntry(toRemove);
               hideModal();
             }}
             className='modalButton'>
-            yes
+            yeah
           </button>
         )}
         <button onClick={hideModal} className='modalButton'>

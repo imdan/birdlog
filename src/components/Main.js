@@ -11,12 +11,15 @@ const Main = ({
   birdsToShow,
   loading,
   showTheModal,
-  addNewBird
+  addNewBird,
+  isInLog,
+  error
 }) => {
   if (home) {
     return (
       <div>
         <main>
+          {error ? <h3>oh sh...something bad happened...try again</h3> : ''}
           {hasCoords ? (
             <button
               className='birdButton ready'
@@ -72,6 +75,7 @@ const Main = ({
           key={bird.comName}
           showTheModal={showTheModal}
           addNewBird={addNewBird}
+          isInLog={isInLog}
         />
       ))}
     </>
