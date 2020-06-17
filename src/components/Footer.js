@@ -13,7 +13,7 @@ const Footer = ({ length, focus, screen, current, logLength }) => {
           bottom: 0
         };
 
-  if (length >= 3 && current === 'home') {
+  if (current === 'home' && length >= 3) {
     return (
       <>
         <footer>

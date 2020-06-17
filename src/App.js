@@ -40,7 +40,7 @@ function App() {
     }
   };
 
-  // FUNCTIONAL TODOS: fix footer issue, figured out added bird state, but it will remain as added as long as the bird name is in the log...so if you see a bird on a different day it would still be in the log and say added and not allow adding again...kinda ok i guess, but that would make this more of a daily log that you clear each time you use it, which would make some sort of save thing nice....
+  // FUNCTIONAL TODOS: figured out added bird state, but it will remain as added as long as the bird name is in the log...so if you see a bird on a different day it would still be in the log and say added and not allow adding again...kinda ok i guess, but that would make this more of a daily log that you clear each time you use it, which would make some sort of save thing nice....ill probably just leave as is for now until a backend is made...
 
   // EVENTUAL TODOS: maybe a nickname input on modal next to name, make entry component in mylog maybe, the maybe user admin...eventually (once I do the express backend...), filter and search log eventually, edit log functionality, undo remove could maybe be cool but idk how id do it exactly so confirm before remove should suffice for now, maybe link to download csv of current log next to clear log link...i think it can be done in node...soo later...
 
@@ -72,6 +72,7 @@ function App() {
 
   const getBirds = (lat, long) => {
     setShowError(false);
+    setCurrent('home');
     setHome(false);
     setLoading(true);
     birdService
