@@ -15,8 +15,8 @@ const About = () => {
           accounts and permanent logs.
         </p>
         <p>
-          In the meantime, feel free to send any issues, feature requests, or
-          feedback to dan@sup.cool with bird log in the subject line.
+          In the meantime, feel free to send any issues, ideas, or feedback to
+          dan@sup.cool.
         </p>
 
         <p style={{ marginTop: '25px', textAlign: 'center' }}>Happy birding.</p>

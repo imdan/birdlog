@@ -19,7 +19,7 @@ const Main = ({
     return (
       <div>
         <main>
-          {error ? <h3>oh sh...something bad happened...try again</h3> : ''}
+          {error ? <h3>oh sh..something bad happened...try again</h3> : ''}
           {hasCoords ? (
             <button
               className='birdButton ready'
