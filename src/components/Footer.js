@@ -6,11 +6,13 @@ const Footer = ({ length, focus, screen, current, logLength }) => {
       ? {
           position: 'fixed',
           bottom: 0,
+          left: 0,
           display: 'none'
         }
       : {
           position: 'fixed',
-          bottom: 0
+          bottom: 0,
+          left: 0
         };
 
   if (current === 'home' && length >= 3) {
