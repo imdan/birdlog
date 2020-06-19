@@ -14,13 +14,14 @@ import axios from 'axios';
 
 const baseUrl = 'https://api.ebird.org/v2/data/obs/geo/recent';
 
-let eBirdId;
+let eBirdId = process.env.REACT_APP_API_KEY;
 
-if (process.env.NODE_ENV !== 'production') {
-  eBirdId = process.env.REACT_APP_API_KEY;
-} else {
-  eBirdId = process.env.API_KEY;
-}
+// this wasnt working for some reason...
+// if (process.env.NODE_ENV !== 'production') {
+//   eBirdId =
+// } else {
+//   eBirdId = process.env.API_KEY;
+// }
 
 const getBirds = (lat, long) => {
   const response = axios({

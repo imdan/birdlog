@@ -4,12 +4,12 @@ const Footer = ({ length, focus, screen, current, logLength }) => {
   const posBottom =
     focus && screen < 425
       ? {
-          position: 'absolute',
+          position: 'fixed',
           bottom: 0,
           display: 'none'
         }
       : {
-          position: 'absolute',
+          position: 'fixed',
           bottom: 0
         };
 

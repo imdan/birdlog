@@ -40,6 +40,8 @@ function App() {
     }
   };
 
+  // TODOS since live: weird overflow-y on about page, weird overflow-x on all pages except birds...i think its the footer causing both of these...it was the footer's absolute positioning, switching to fixed should fix it
+
   // TOPONDER: figured out added bird state, but it will remain as added as long as the bird name is in the log...so if you see a bird on a different day it would still be in the log and say added and not allow adding again...kinda ok i guess, but that would make this more of a daily log that you clear each time you use it, which would make some sort of save thing nice....ill probably just leave as is for now until a backend is made...
 
   // EVENTUAL TODOS: maybe a nickname input on modal next to name, make entry component in mylog maybe, then maybe user admin...eventually (once I do the express backend...after finishing relevant fullstackopen chapters), filter and search log eventually, edit log functionality, maybe link to download csv of current log next to clear log link...i think it can be done in node...soo later...
