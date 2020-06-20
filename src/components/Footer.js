@@ -20,7 +20,7 @@ const Footer = ({ length, focus, screen, current, logLength }) => {
       <>
         <footer>
           <a href='https://www.sup.cool'>
-            <img src='./sup_tb.png' alt='sup logo' width='40' height='40' />
+            <img src='./sup_tb.png' alt='sup logo' width='38' height='38' />
           </a>
         </footer>
       </>
@@ -32,7 +32,7 @@ const Footer = ({ length, focus, screen, current, logLength }) => {
       <>
         <footer>
           <a href='https://www.sup.cool'>
-            <img src='./sup_tb.png' alt='sup logo' width='40' height='40' />
+            <img src='./sup_tb.png' alt='sup logo' width='38' height='38' />
           </a>
         </footer>
       </>
@@ -43,7 +43,7 @@ const Footer = ({ length, focus, screen, current, logLength }) => {
     <>
       <footer style={posBottom}>
         <a href='https://www.sup.cool'>
-          <img src='./sup_tb.png' alt='sup logo' width='40' height='40' />
+          <img src='./sup_tb.png' alt='sup logo' width='38' height='38' />
         </a>
       </footer>
     </>
